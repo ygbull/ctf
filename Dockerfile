@@ -21,10 +21,9 @@ RUN mkdir /var/www/html/uploads && \
     chown www-data:www-data /var/www/html/uploads && \
     chmod 755 /var/www/html/uploads
 
-# create the .hidden directory and set the generated password
-RUN mkdir /var/www/html/.hidden && \
-    python3 /tmp/generatePW.py > /var/www/html/.hidden/password.txt && \
-    chown -R www-data:www-data /var/www/html/.hidden && \
-    chmod -R 700 /var/www/html/.hidden
+# create the flag file and set the generated password
+RUN python3 /tmp/generatePW.py > /etc/flag && \
+    chown root:root /etc/flag && \
+    chmod 400 /etc/flag
 
 EXPOSE 80
