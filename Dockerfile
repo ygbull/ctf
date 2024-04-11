@@ -1,8 +1,8 @@
 FROM php:7.4-apache
 
-# install mysql and php first
+# install mysql, php extensions and python
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends default-mysql-server && \
+    apt-get install -y --no-install-recommends default-mysql-server python3 && \
     docker-php-ext-install mysqli pdo pdo_mysql && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -14,15 +14,16 @@ RUN a2enmod rewrite && \
 # copy files
 COPY src/index.html /var/www/html/index.html
 COPY src/upload.php /var/www/html/upload.php
+COPY src/generatePW.py /tmp/generatePW.py
 
 # make uploads directory
 RUN mkdir /var/www/html/uploads && \
     chown www-data:www-data /var/www/html/uploads && \
     chmod 755 /var/www/html/uploads
 
-# create the .hidden directory
+# create the .hidden directory and set the generated password
 RUN mkdir /var/www/html/.hidden && \
-    echo "CTF{y0ur_p4ssw0rd_h3re}" > /var/www/html/.hidden/password.txt && \
+    python3 /tmp/generatePW.py > /var/www/html/.hidden/password.txt && \
     chown -R www-data:www-data /var/www/html/.hidden && \
     chmod -R 700 /var/www/html/.hidden
 
