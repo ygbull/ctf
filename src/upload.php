@@ -8,14 +8,14 @@ $uploadOk = 1;
 $fileType = $original_extension;
 
 // Check if the file is a PDF by MIME type and magic number
-if(isset($_POST["submit"])) {
+if (isset($_POST["submit"])) {
     $file_tmp = $_FILES["fileToUpload"]["tmp_name"];
     $check_mime = mime_content_type($file_tmp);
     $file = fopen($file_tmp, 'rb');
     $first_bytes = fgets($file, 5); // Read first 5 bytes to check for %PDF-
     fclose($file);
 
-    if($check_mime == 'application/pdf' && $first_bytes === "%PDF-") {
+    if ($check_mime == 'application/pdf' && $first_bytes === "%PDF") {
         echo "File is a verified PDF.";
         $uploadOk = 1;
     } else {
@@ -25,7 +25,7 @@ if(isset($_POST["submit"])) {
 }
 
 // Allow only PDF file formats
-if($fileType != "pdf") {
+if ($fileType != "pdf") {
     echo "Sorry, only PDF files are allowed.";
     $uploadOk = 0;
 }
@@ -41,4 +41,3 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-?>
