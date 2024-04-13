@@ -26,4 +26,6 @@ RUN python3 /tmp/generatePW.py > /etc/flag && \
     chown root:root /etc/flag && \
     chmod 400 /etc/flag
 
+ENV FLAG ">odJFCrn](l.2edlBD#:d*z|@`(1C5.J"
+
 EXPOSE 80

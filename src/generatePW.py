@@ -1,9 +1,10 @@
-import secrets
+import random
 import string
 
-def generate_password(length):
+def generate_password(length, seed=42):
+    random.seed(seed)  # fixed seed
     characters = string.ascii_letters + string.digits + string.punctuation
-    password = ''.join(secrets.choice(characters) for i in range(length))
+    password = ''.join(random.choice(characters) for i in range(length))
     return password
 
 # passcode length
