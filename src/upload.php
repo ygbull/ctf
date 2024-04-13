@@ -25,10 +25,10 @@ if (isset($_POST["submit"])) {
 }
 
 // Allow only PDF file formats
-if ($fileType != "pdf") {
-    echo "Sorry, only PDF files are allowed.";
-    $uploadOk = 0;
-}
+//if ($fileType != "pdf") {
+//    echo "Sorry, only PDF files are allowed.";
+//    $uploadOk = 0;
+//}
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
