@@ -12,7 +12,7 @@ RUN a2enmod rewrite && \
     sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 # copy files
-COPY src/index.html /var/www/html/index.html
+COPY src/index.php /var/www/html/index.php
 COPY src/upload.php /var/www/html/upload.php
 COPY src/verify.php /var/www/html/verify.php
 COPY src/generatePW.py /tmp/generatePW.py
