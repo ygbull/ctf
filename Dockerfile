@@ -14,6 +14,7 @@ RUN a2enmod rewrite && \
 # copy files
 COPY src/index.html /var/www/html/index.html
 COPY src/upload.php /var/www/html/upload.php
+COPY src/verify.php /var/www/html/verify.php
 COPY src/generatePW.py /tmp/generatePW.py
 
 # make uploads directory
