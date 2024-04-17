@@ -1,0 +1,33 @@
+name: <Your-Challenge-Name>
+
+docker_image: localhost:56156/<Your-Challenge-Name>
+
+description: |
+  author: [Your name](Link-to-Your-Profile)
+
+  Example Instruction:
+  This challenge is a mixture of password guessing, social engineering, and basic cryptography. Don't overthink it.
+
+  Step 1:
+    Forward the traffic back from the remote server
+  Step 2:
+    Access the website on local port and see whether you can fetch hidden password on the website. (Do not overthink it, it resides in the content of the site.)
+  Step 3:
+    Submit the Flag.
+
+# Value should be in range of 100-300
+value: 200
+# Available categories are:
+category: Miscellaneous
+# Your custom Flag
+flag: CTF_SDaT{My_Custom_Flag}
+
+hints:
+  - {
+    content: "The content of the website includes not only html but also js script, headers, cookie, etc.",
+    cost: 20
+  }
+  - {
+    content: "Try an online translating/deciphering tool for the Pig Latin riddle and the Caesar and Vigenère Ciphers.",
+    cost: 40
+  }
