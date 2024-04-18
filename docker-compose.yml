@@ -1,11 +1,13 @@
 version: '3'
 
 services:
-  <challenge-name>:
-    image: localhost:56156/<challenge-name>
+  ctf-challenge:
+    image: localhost:56156/ctf-challenge
     build:
-      context: ../../../ # do not change
-      dockerfile: Challenges/<category>/<folder_name>/Dockerfile
+      context: ../../../
+      dockerfile: Challenges/ctf-category/ctf-folder/Dockerfile
+    ports:
+      - "80:80"
     networks:
       nw0:
     deploy:
@@ -13,6 +15,8 @@ services:
         limits:
           memory: 200m
           cpus: '0.1'
+    environment:
+      FLAG: "9c2c9f937a52aeea5dcaf7885dd835ee"
 
 networks:
   nw0:

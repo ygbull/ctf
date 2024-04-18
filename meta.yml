@@ -1,33 +1,35 @@
-name: <Your-Challenge-Name>
+name: UMass-CTF-Challenge
 
-docker_image: localhost:56156/<Your-Challenge-Name>
+docker_image: localhost:56156/UMass-CTF-Challenge
 
 description: |
-  author: [Your name](Link-to-Your-Profile)
+  author: [Haijie Qin](https://github.com/ygbull)
 
   Example Instruction:
-  This challenge is a mixture of password guessing, social engineering, and basic cryptography. Don't overthink it.
+  This challenge tests the ability to manipulate HTTP headers, bypass file upload restrictions, and exploit simple PHP scripts to access sensitive files. 
+  Participants must navigate through a series of web-based forms, modify file content, and finally retrieve a flag from a supposedly secure location.
 
   Step 1:
-    Forward the traffic back from the remote server
+    Modify the Referer header to gain access to the main page.
   Step 2:
-    Access the website on local port and see whether you can fetch hidden password on the website. (Do not overthink it, it resides in the content of the site.)
+    Bypass the file type verification to upload a malicious script that can read server files.
   Step 3:
-    Submit the Flag.
+    Execute the uploaded script to retrieve the flag and submit it.
 
-# Value should be in range of 100-300
-value: 200
-# Available categories are:
-category: Miscellaneous
-# Your custom Flag
-flag: CTF_SDaT{My_Custom_Flag}
+value: 250
+category: Web Exploitation
+flag: CTF_SDaT{9c2c9f937a52aeea5dcaf7885dd835ee}
 
 hints:
   - {
-    content: "The content of the website includes not only html but also js script, headers, cookie, etc.",
+    content: "The server checks for a specific Referer header to allow access. Can you spoof this header to gain access?",
+    cost: 10
+  }
+  - {
+    content: "Although the server restricts uploads to PDFs by checking MIME types and magic numbers, can you disguise a PHP script as a PDF?",
     cost: 20
   }
   - {
-    content: "Try an online translating/deciphering tool for the Pig Latin riddle and the Caesar and Vigenère Ciphers.",
-    cost: 40
+    content: "Files are uploaded with their names base64-encoded and made URL safe. Think about how you can use this method to predict the path of your uploaded file.",
+    cost: 30
   }
