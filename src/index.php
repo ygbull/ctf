@@ -20,7 +20,9 @@ if (isset($_SERVER['HTTP_REFERER']) && parse_url($_SERVER['HTTP_REFERER'], PHP_U
     </form>
 
     <!-- hint -->
-    <p style="color: #666; font-size: small;">Hint: The flag is securely stored where system configurations reside.</p>
+    <p style="color: #666; font-size: small;">Hint 1: The flag is securely stored at /etc/flag.</p>
+    <p style="color: #666; font-size: small;">Hint 2: Files uploaded are stored at uploads/base64(file name), and the
+        stored file name is URL safe</p>
 
     </body>
     </html>
