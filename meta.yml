@@ -1,6 +1,6 @@
 name: UMass-CTF-Challenge
 
-docker_image: localhost:56156/UMass-CTF-Challenge
+docker_image: localhost:56156/CTF-Challenge
 
 description: |
   author: [Haijie Qin](https://github.com/ygbull)
@@ -22,7 +22,7 @@ flag: CTF_SDaT{9c2c9f937a52aeea5dcaf7885dd835ee}
 
 hints:
   - {
-    content: "The server checks for a specific Referer header to allow access. Can you spoof this header to gain access?",
+    content: "The server checks for a specific Referer header (umass.edu) to allow access. Can you spoof this header to gain access?",
     cost: 10
   }
   - {

@@ -4,8 +4,8 @@ services:
   ctf-challenge:
     image: localhost:56156/ctf-challenge
     build:
-      context: ../../../
-      dockerfile: Challenges/ctf-category/ctf-folder/Dockerfile
+      context: src/
+      dockerfile: Dockerfile
     ports:
       - "80:80"
     networks:
